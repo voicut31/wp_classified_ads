@@ -17,13 +17,13 @@ function vt_classified_ads_admin_menu()  {
 
 function vtads_wordpress_plugin_form() {
     ob_start();
-    require_once 'ad-form.php';
+    require_once 'includes/ads/ad-form.php';
     return ob_get_clean();
 }
 
 function vtads_wordpress_plugin_list() {
     ob_start();
-    require_once 'list.php';
+    require_once 'includes/ads/list.php';
     return ob_get_clean();
 }
 
@@ -35,10 +35,10 @@ function vtads_wordpress_plugin_single() {
     $strKey = $_GET['ad'];
 
     // Fetch the ad details
-    $ad = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table WHERE str_key LIKE '%s'", $strKey));
+    $ad = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table WHERE slug LIKE '%s'", $strKey));
 
     ob_start();
-    require_once 'ad-single.php';
+    require_once 'includes/ads/ad-single.php';
     return ob_get_clean();
 }
 
@@ -73,7 +73,7 @@ function vtads_loadmore_ajax_handler(){
 
     //Query for limit paging
     $limit = "LIMIT " . $pageRecordsNumber . " OFFSET " . ($page - 1) * $pageRecordsNumber;
-    $sql = "SELECT id, str_key, title, description, price, filename FROM $table WHERE status = 2 " . $limit;
+    $sql = "SELECT id, slug, title, description, price, filename FROM $table WHERE status = 2 " . $limit;
 
     $records = $wpdb->get_results($sql);
 
