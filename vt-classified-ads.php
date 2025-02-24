@@ -33,10 +33,23 @@ function vatads_install() {
     $charset_collate = $wpdb->get_charset_collate();
 
     // SQL for ads table
+    $categories_table_name = $wpdb->prefix . 'classified_categories';
+    
+    $categories_sql = "CREATE TABLE $categories_table_name (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `title` varchar(255) NOT NULL,
+        `description` text,
+        `slug` varchar(100) NOT NULL,
+        `status` tinyint DEFAULT 1,
+        `created_at` timestamp NULL DEFAULT NULL,
+        `updated_at` timestamp NULL DEFAULT NULL,
+        PRIMARY KEY (`id`)
+    ) $charset_collate;";
+
     $ads_sql = "CREATE TABLE $ads_table_name (
         `id` int NOT NULL AUTO_INCREMENT,
         `title` varchar(255) NOT NULL,
-        `str_key` varchar(100) DEFAULT NULL,
+        `slug` varchar(100) DEFAULT NULL,
         `description` text,
         `phone` varchar(25) DEFAULT NULL,
         `price` float DEFAULT NULL,

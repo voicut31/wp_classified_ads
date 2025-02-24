@@ -32,7 +32,7 @@ function callForRecords() {
                 {
                     let itemContent = '<li class="vtads-item">';
                     itemContent += '<img src="' + item.filename + '" class="vtads-item-image" />';
-                    itemContent += '<div class="vtads-item-title"><a href="/ad?ad=' + item.str_key + '">' + item.title + '</a></div>';
+                    itemContent += '<div class="vtads-item-title"><a href="/ad?ad=' + item.slug + '">' + item.title + '</a></div>';
                     itemContent += '<div class="vtads-item-price">' + item.price + ' RON</div>';
                     itemContent += '</li>';
 

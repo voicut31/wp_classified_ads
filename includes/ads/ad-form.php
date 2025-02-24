@@ -22,6 +22,7 @@ if(isset($_POST['submitted'])) {
         $hasError = true;
     } else {
         $storeArr['title'] = trim($_POST['title']);
+        $storeArr['slug'] = strtolower(str_replace(' ', '-', $storeArr['title']));
     }
 
     if(trim($_POST['description']) === '') {

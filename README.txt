@@ -1,1 +1,1 @@
-# Classified ADS plugin
+# Classified ADS plugin for Wordpress

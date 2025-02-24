@@ -38,6 +38,10 @@
             </td>
             <td class="date column-date" data-colname="Category"></td>
             <td class="date column-date" data-colname="Date">Published<br><?php echo $record->created_at; ?></td>
+            <td class="manage-column column-approval" data-colname="Actions">
+                <a href="/wp-admin/admin.php?page=vt-classified-ads&ad=<?php echo $record->id; ?>&action=approve">Approve</a> |
+                <a href="/wp-admin/admin.php?page=vt-classified-ads&ad=<?php echo $record->id; ?>&action=edit">Edit</a>
+            </td>
         </tr>
     <?php
         }
